@@ -13,7 +13,7 @@ import android.view.MotionEvent;
  * @author Boris Strandjev
  *
  */
-public class NotifyOutOfBoundsViewPager extends ViewPager {
+public class NotifyOutOfBoundsViewPager extends DecoratedViewPager {
     public interface OnSwipeOutListener {
         public void onSwipeOutAtStart();
 
@@ -23,12 +23,12 @@ public class NotifyOutOfBoundsViewPager extends ViewPager {
     private float mStartDragX;
     private OnSwipeOutListener onSwipeOutListener;
 
-    public NotifyOutOfBoundsViewPager(Context context) {
-        super(context);
+    public NotifyOutOfBoundsViewPager(Context context, ViewPager viewPager) {
+        super(context, viewPager);
     }
 
-    public NotifyOutOfBoundsViewPager(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public NotifyOutOfBoundsViewPager(Context context, AttributeSet attrs, ViewPager viewPager) {
+        super(context, attrs, viewPager);
     }
 
     @Override

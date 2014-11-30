@@ -52,15 +52,13 @@ import android.view.inputmethod.InputConnection;
 public class DecoratedViewPager extends ViewPager {
     private ViewPager viewPager;
 
-    public DecoratedViewPager(Context context) {
+    public DecoratedViewPager(Context context, ViewPager viewPager) {
         super(context);
+        this.viewPager = viewPager;
     }
 
-    public DecoratedViewPager(Context context, AttributeSet attrs) {
+    public DecoratedViewPager(Context context, AttributeSet attrs, ViewPager viewPager) {
         super(context, attrs);
-    }
-
-    public void setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
     }
 
@@ -71,6 +69,11 @@ public class DecoratedViewPager extends ViewPager {
         } else {
             super.addFocusables(arg0, arg1, arg2);
         }
+    }
+
+    @Override
+    public boolean arrowScroll(int arg0) {
+        return (viewPager != null) ? viewPager.arrowScroll(arg0) : super.arrowScroll(arg0);
     }
 
     @Override
@@ -91,10 +94,6 @@ public class DecoratedViewPager extends ViewPager {
         }
     }
 
-    @Override
-    public boolean arrowScroll(int arg0) {
-        return (viewPager != null) ? viewPager.arrowScroll(arg0) : super.arrowScroll(arg0);
-    }
 
     @Override
     public boolean beginFakeDrag() {
